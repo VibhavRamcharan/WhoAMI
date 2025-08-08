@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AccountAPI.Tests.T3.Framework;
 using AccountAPI.Tests.T3.Models;
+using AccountAPI.Tests.T3.Tests;
 
 namespace AccountAPI.Tests.T3
 {
@@ -16,34 +17,14 @@ namespace AccountAPI.Tests.T3
             await fixture.InitializeAsync();
 
             var httpClient = fixture.Client;
-            var userApiClient = new UserApiClient(httpClient);
 
-            // Register a user first
-            var registerUser = new User { Username = "testuser", Password = "password" };
-            var registerResponse = await userApiClient.RegisterUser(registerUser);
+            // Run Register Performance Tests
+            var registerPerformanceTests = new RegisterPerformanceTests(httpClient);
+            await registerPerformanceTests.RunRegisterScenario();
 
-            if (registerResponse.Payload.IsSome() && !registerResponse.Payload.Value.IsSuccessStatusCode)
-            {
-                Console.WriteLine($"User registration failed: {registerResponse.Payload}");
-                fixture.Dispose();
-                return;
-            }
-
-            var scenario = Scenario.Create("login_scenario", async context =>
-            {
-                var loginUser = new User { Username = "testuser", Password = "password" };
-                var response = await userApiClient.LoginUser(loginUser);
-
-                return response;
-            })
-            .WithLoadSimulations(new[] 
-            {
-                Simulation.KeepConstant(copies: 1, during: TimeSpan.FromSeconds(30))
-            });
-
-            NBomberRunner
-                .RegisterScenarios(scenario)
-                .Run();
+            // Run Login Performance Tests
+            var loginPerformanceTests = new LoginPerformanceTests(httpClient);
+            await loginPerformanceTests.RunLoginScenario();
 
             fixture.Dispose();
         }
