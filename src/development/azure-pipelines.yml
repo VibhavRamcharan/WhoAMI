@@ -171,3 +171,50 @@ stages:
       displayName: 'Stop and Remove Docker container after tests'
       condition: always() # Ensure this runs even if previous steps fail
 
+- stage: TestT3
+  displayName: Run T3 Performance Tests
+  jobs:
+  - job: TestT3
+    displayName: Run T3 Performance Tests
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: UseDotNet@2
+      displayName: 'Use .NET SDK 8.x'
+      inputs:
+        version: '8.x'
+
+    - script: |
+        docker ps -q --filter ancestor=whoami-webapi | xargs -r docker stop
+        docker ps -aq --filter ancestor=whoami-webapi | xargs -r docker rm
+      displayName: 'Stop and Remove existing Docker containers'
+
+    - script: |
+        docker run -d -p 8081:8080 -e ASPNETCORE_ENVIRONMENT=Development whoami-webapi
+      displayName: 'Start WebAPI Docker Container'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore T3 NuGet packages'
+      inputs:
+        command: 'restore'
+        projects: 'src/development/.webapi.tests.t3/AccountAPI.Tests.T3.csproj'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Build T3 Test Project'
+      inputs:
+        command: 'build'
+        projects: 'src/development/.webapi.tests.t3/AccountAPI.Tests.T3.csproj'
+        arguments: '--configuration Release'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Run T3 Tests'
+      inputs:
+        command: 'run' # Use 'run' for NBomber tests
+        projects: 'src/development/.webapi.tests.t3/AccountAPI.Tests.T3.csproj'
+        arguments: '--configuration Release'
+
+    - script: |
+        docker ps -q --filter ancestor=whoami-webapi | xargs -r docker stop
+        docker ps -aq --filter ancestor=whoami-webapi | xargs -r docker rm
+      displayName: 'Stop and Remove Docker container after tests'
+      condition: always() # Ensure this runs even if previous steps fail
