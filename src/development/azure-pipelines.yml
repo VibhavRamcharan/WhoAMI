@@ -189,10 +189,6 @@ stages:
         docker ps -aq --filter ancestor=whoami-webapi | xargs -r docker rm
       displayName: 'Stop and Remove existing Docker containers'
 
-    - script: |
-        docker run -d -p 8081:8080 -e ASPNETCORE_ENVIRONMENT=Development whoami-webapi
-      displayName: 'Start WebAPI Docker Container'
-
     - task: DotNetCoreCLI@2
       displayName: 'Restore T3 NuGet packages'
       inputs:
