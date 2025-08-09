@@ -7,8 +7,9 @@ Welcome to my GitHub profile! I'm a results-driven engineer with a passion for b
 ### 🔍 About Me
 
 - **🔧 Expertise:** DevOps, Cloud Native Architecture, CI/CD, Infrastructure as Code (IaC), Kubernetes, Site Reliability Engineering (SRE)
-- **🎓 Background:** Hons. in Computer Science, AWS Certified DevOps Engineer - Professional, Certified Kubernetes Administrator (CKA)
-- **💼 Seeking:** A challenging Senior Engineering role where I can leverage my skills in automation, development and cloud technologies to build and maintain cutting-edge systems.
+- **🎓 Background:** Hons. in Information Technology, ISTQB Certified Tester: Advanced Level - Test Analyst (Credential ID: 17-CTAL-TA-125743-05)
+- **💼 Seeking:** A challenging Senior Engineering role where I can leverage my skills in test automation, development and cloud technologies to build and maintain cutting-edge systems.
+- **💼 Locations:** Open to Remote and International Relocation — USA, Canada, Portugal, Spain, EU
 
 ### 🚀 What I Do
 
@@ -23,12 +24,12 @@ Welcome to my GitHub profile! I'm a results-driven engineer with a passion for b
 This project in the `src/development` directory is a comprehensive showcase of my skills in test automation, API development, containerization, and infrastructure as code.
 
 - **Development | WebAPI:** A .NET Core Web API (`AccountAPI in /.webapi`) for user account management powered by LiteDb datastore.
-- **Test Automation:** Robust collection of test suites (NUnit | xUnit | NSubstitute | Containerization)
+- **Test Automation:** Robust collection of test suites (NUnit | xUnit | NSubstitute | Containerization | Azure | Terraform)
   - **_Unit_** (in `./.webapi.tests.unit`) demonstrating unit tests which isolate a single unit of code and mock all of its direct dependencies.
   - **_T1_** (in `./.webapi.tests.t1`) demonstrating in-memory integration tests, exercising different parts of the WebAPI in a controlled environment.
-  - **_T2_** (in `./.webapi.tests.t2`) demonstrating virtualized integration tests.
-  - **_T3_** (in `./.webapi.tests.t3`) demonstrating virtualized performance tests (Not implemented as yet).
-  - **_T4_** (in `./.webapi.tests.t4`) demonstrating production tests (Not implemented as yet).
+  - **_T2_** (in `./.webapi.tests.t2`) demonstrating virtualized integration tests via Docker.
+  - **_T3_** (in `./.webapi.tests.t3`) demonstrating virtualized performance tests via Docker.
+  - **_T4_** (in `./.webapi.tests.t4`) demonstrating production tests (Backlog feature).
 - **Containerization:** Docker integration for the `AccountAPI` in `./.docker`, enabling consistent deployment.
 - **CI/CD:** Azure Pipelines configuration (`azure-pipelines.yml`) for automated builds, tests, and Docker image pushes, including SonarQube analysis.
 - **Infrastructure as Code:** Related Terraform configurations (in `./terraform`) demonstrate provisioning Azure VMs for hosting the WebAPI.
@@ -47,16 +48,16 @@ This project in the `src/development` directory is a comprehensive showcase of m
 
 ### 🛠️ Open Source Contributions
 
-- **HashiCorp Terraform:** Actively contributing to the development of Terraform providers, with a focus on improving resource management and adding support for new cloud services. My work helps thousands of developers automate their infrastructure more effectively.
-- **Kubernetes:** Regularly contribute to the Kubernetes project, particularly in the areas of networking and storage. I have submitted pull requests to enhance CNI plugin functionality and improve storage volume lifecycle management.
-- **Prometheus:** Contributed to the official Prometheus client libraries, helping to improve the instrumentation of applications for better observability.
+
 
 ### 🌱 Learning & Development
 
 I am committed to staying at the forefront of DevOps and cloud-native technologies.
-- **Currently Mastering:** Advanced service mesh concepts with Istio and Linkerd, and diving deep into cloud-native security best practices.
-- **Exploring:** The potential of WebAssembly (Wasm) in serverless and edge computing environments.
-- **Future Goals:** Obtaining the AWS Certified Security - Specialty certification and contributing to the development of a major open source GitOps tool like ArgoCD or Flux.
+
+- **Currently Mastering:** AI | Full suite understand and implementaiton of large language models (LLMs)
+- **Exploring:** DevOps architecture, deployment pipelines, and cloud infrastructure
+- **Future Goals:** Azure AI-900, AWS Certified AI Practitioner and very-likely IBM AI Engineering Professional (coursera)
+- **Making it simple:** Think of AI as the parent technology, and LLMs as a specialized subset within it, excelling at natural language processing
 
 ### 🌐 Connect with Me
 
