@@ -1,0 +1,42 @@
+name: .NET CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Build WebAPI
+      run: dotnet build src/development/.webapi/AccountAPI.sln
+
+    - name: Build Docker Image
+      run: docker build -t webapi-image -f src/development/.docker/Dockerfile .
+
+    - name: Run Docker Container
+      run: docker run -d -p 80:80 --name webapi-container webapi-image
+
+    - name: Run Unit Tests
+      run: dotnet test src/development/.webapi.tests.unit/AccountAPI.Tests.Unit.csproj
+
+    - name: Run T1 Tests
+      run: dotnet test src/development/.webapi.tests.t1/AccountAPI.Tests.T1.csproj
+
+    - name: Run T2 Tests
+      run: dotnet test src/development/.webapi.tests.t2/AccountAPI.Tests.T2.csproj
+
+    - name: Run T3 (NBomber) Tests
+      run: dotnet run --project src/development/.webapi.tests.t3/AccountAPI.Tests.T3.csproj
+
+    - name: Cleanup Docker Container
+      if: always()
+      run: docker stop webapi-container && docker rm webapi-container
