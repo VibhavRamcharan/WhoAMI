@@ -1,15 +1,12 @@
-using System.Net.Http;
-using System.Threading.Tasks;
-using Xunit;
 using AccountAPI.Tests.T2.Framework;
-using Newtonsoft.Json.Linq;
 using AccountAPI.Tests.T2.Framework.Helpers;
+using Newtonsoft.Json.Linq;
 
 namespace AccountAPI.Tests.T2.Tests
 {
-    public class AccountControllerTests : TestBase
+    public class AccountControllerTests : ControllerBase
     {
-        public AccountControllerTests(TestFixture fixture) : base(fixture)
+        public AccountControllerTests() : base()
         {
         }
 

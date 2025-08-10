@@ -1,4 +1,4 @@
-namespace AccountAPI.Tests.Framework.Helpers
+namespace AccountAPI.Tests.T1.Framework.Helpers
 {
     public static class TestCategories
     {

@@ -2,13 +2,13 @@ using AccountAPI.Controllers;
 using AccountAPI.Datastore;
 using AccountAPI.Models;
 using AccountAPI.Services;
-using AccountAPI.Tests.Framework.Builders;
-using AccountAPI.Tests.Framework.Helpers;
-using AccountAPI.Tests.Framework.Implements;
+using AccountAPI.Tests.T1.Framework.Builders;
+using AccountAPI.Tests.T1.Framework.Helpers;
+using AccountAPI.Tests.T1.Framework.Implements;
 using LiteDB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-namespace AccountAPI.Tests.Tests.T1;
+namespace AccountAPI.Tests.T1.Tests;
 internal class AccountControllerTests : FrameworkTestFixtureBase
 {
     protected IMemoryCache _memoryCache = null!;
@@ -117,7 +117,7 @@ internal class AccountControllerTests : FrameworkTestFixtureBase
     public async Task GIVEN_ValidSession_WHEN_ValidateSession_THEN_ReturnOk()
     {
         // ARRANGE
-        var user = UserHelper.GenerateNewUserCredentials();        
+        var user = UserHelper.GenerateNewUserCredentials();
         string mockSessionId = Guid.NewGuid().ToString();
         _memoryCache = new MemoryCacheMockBuilder()
             .WithTryGetValue(mockSessionId, user.Username, true)

@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Caching.Memory;
 using NSubstitute;
 
-namespace AccountAPI.Tests.Framework.Builders;
+namespace AccountAPI.Tests.T1.Framework.Builders;
 
 public class MemoryCacheMockBuilder
 {
@@ -14,11 +14,11 @@ public class MemoryCacheMockBuilder
 
     public MemoryCacheMockBuilder WithTryGetValue(string key, object value, bool returns = true)
     {
-                _memoryCache.TryGetValue(key, out Arg.Any<object?>()!).Returns(call =>
-        {
-            call[1] = value;
-            return returns;
-        });
+        _memoryCache.TryGetValue(key, out Arg.Any<object?>()!).Returns(call =>
+{
+    call[1] = value;
+    return returns;
+});
         return this;
     }
 

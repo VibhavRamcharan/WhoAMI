@@ -1,6 +1,6 @@
 ﻿using AccountAPI.Models;
 
-namespace AccountAPI.Tests.Framework.Helpers
+namespace AccountAPI.Tests.T1.Framework.Helpers
 {
     internal class SessionHelper
     {

@@ -1,12 +1,13 @@
-﻿using AccountAPI.Tests.Framework.Helpers;
-using NUnit.Framework;
+﻿
 
-namespace AccountAPI.Tests.Framework.Implements
+using AccountAPI.Tests.T1.Framework.Helpers;
+
+namespace AccountAPI.Tests.T1.Framework.Implements
 {
     [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
     internal class FrameworkTestFixtureBase
     {
-        public UserHelper UserHelper { get;set; }
+        public UserHelper UserHelper { get; set; }
         public SessionHelper SessionHelper { get; set; }
 
         public FrameworkTestFixtureBase()
@@ -20,9 +21,9 @@ namespace AccountAPI.Tests.Framework.Implements
             Console.WriteLine($"[LOG] {DateTime.Now}: {message}");
         }
 
-                public virtual void SetupTest()
+        public virtual void SetupTest()
         {
-            
+
         }
 
         [TearDown]

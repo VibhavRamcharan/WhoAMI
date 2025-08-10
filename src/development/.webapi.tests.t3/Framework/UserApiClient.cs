@@ -1,17 +1,14 @@
-using NBomber.CSharp;
-using NBomber.Http.CSharp;
-using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using AccountAPI.Tests.T3.Models;
+using NBomber.Http.CSharp;
 
 namespace AccountAPI.Tests.T3.Framework
 {
     public static class ApiEndpoints
     {
-        public const string Register = "/Account/register";
-        public const string Login = "/Account/login";
+        public const string Register = "/account/register";
+        public const string Login = "/account/login";
     }
 
     public class UserApiClient
@@ -28,8 +25,7 @@ namespace AccountAPI.Tests.T3.Framework
             var userJson = JsonSerializer.Serialize(user);
             var content = new StringContent(userJson, Encoding.UTF8, "application/json");
 
-            var request = Http.CreateRequest("POST", ApiEndpoints.Register)
-                                  .WithBody(content);
+            var request = Http.CreateRequest("POST", ApiEndpoints.Register).WithBody(content);
 
             return await Http.Send(_httpClient, request);
         }
@@ -39,8 +35,7 @@ namespace AccountAPI.Tests.T3.Framework
             var userJson = JsonSerializer.Serialize(user);
             var content = new StringContent(userJson, Encoding.UTF8, "application/json");
 
-            var request = Http.CreateRequest("POST", ApiEndpoints.Login)
-                                  .WithBody(content);
+            var request = Http.CreateRequest("POST", ApiEndpoints.Login).WithBody(content);
 
             return await Http.Send(_httpClient, request);
         }

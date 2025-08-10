@@ -1,10 +1,4 @@
-using NBomber.CSharp;
-using NBomber.Http.CSharp;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using AccountAPI.Tests.T3.Framework;
-using AccountAPI.Tests.T3.Models;
 using AccountAPI.Tests.T3.Tests;
 
 namespace AccountAPI.Tests.T3
@@ -13,7 +7,7 @@ namespace AccountAPI.Tests.T3
     {
         static async Task Main(string[] args)
         {
-            var fixture = new TestFixture();
+            var fixture = new PerformanceFixture();
             await fixture.InitializeAsync();
 
             var httpClient = fixture.Client;

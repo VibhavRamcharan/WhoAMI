@@ -12,8 +12,8 @@ public class AccountDataStore : IAccountDataStore
     public AccountDataStore()
     {
         _db = new LiteDatabase(@"Account.db");
-    } 
-  
+    }
+
     public AccountDataStore(LiteDatabase db)
     {
         _db = db;
