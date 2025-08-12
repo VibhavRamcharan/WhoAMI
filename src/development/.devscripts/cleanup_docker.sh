@@ -1,11 +1,8 @@
 #!/bin/bash
-echo "Stopping all running Docker containers..."
-docker stop $(docker ps -aq)
-
 echo "Removing all Docker containers..."
-docker rm $(docker ps -aq)
+docker ps -aq | xargs -r docker rm
 
 echo "Removing all Docker images..."
-docker rmi $(docker images -aq)
+docker images -aq | xargs -r docker rmi --force
 
 echo "Docker images cleanup complete."

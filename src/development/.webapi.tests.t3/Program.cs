@@ -12,13 +12,8 @@ namespace AccountAPI.Tests.T3
 
             var httpClient = fixture.Client;
 
-            // Run Register Performance Tests
-            var registerPerformanceTests = new RegisterPerformanceTests(httpClient);
-            await registerPerformanceTests.RunRegisterScenario();
-
-            // Run Login Performance Tests
-            var loginPerformanceTests = new LoginPerformanceTests(httpClient);
-            await loginPerformanceTests.RunLoginScenario();
+            var combinedTests = new CombinedPerformanceTests(httpClient);
+            await combinedTests.RunAllScenarios();
 
             fixture.Dispose();
         }
