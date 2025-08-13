@@ -1,1 +1,0 @@
-This is a test commit to check for branch protection.
