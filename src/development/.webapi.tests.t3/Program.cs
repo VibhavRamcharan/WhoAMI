@@ -6,13 +6,18 @@ namespace AccountAPI.Tests.T3
     class Program
     {  
         static async Task Main(string[] args)
-        { 
-            var registerScenario = new AccountControllerScenario().CreateRegisterScenario(new HttpClient());
+        {
+            using var httpClient = new HttpClient();
+            
+            var controller = new AccountControllerScenarios();
+
+            var registerScenario = controller.CreateRegisterScenario(httpClient);
+
+            var loginEndpoint = controller.CreateLoginScenario(httpClient);
 
             NBomberRunner
-                .RegisterScenarios(registerScenario)
+                .RegisterScenarios(registerScenario, loginEndpoint)
                 .Run();
         }
     }
-
 }
