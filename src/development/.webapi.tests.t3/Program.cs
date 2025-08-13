@@ -1,21 +1,18 @@
-using AccountAPI.Tests.T3.Framework;
-using AccountAPI.Tests.T3.Tests;
+using AccountAPI.Tests.T3.Scenarios;
+using NBomber.CSharp;
 
 namespace AccountAPI.Tests.T3
 {
     class Program
-    {
+    {  
         static async Task Main(string[] args)
-        {
-            var fixture = new PerformanceFixture();
-            await fixture.InitializeAsync();
+        { 
+            var registerScenario = new AccountControllerScenario().CreateRegisterScenario(new HttpClient());
 
-            var httpClient = fixture.Client;
-
-            var combinedTests = new CombinedPerformanceTests(httpClient);
-            await combinedTests.RunAllScenarios();
-
-            fixture.Dispose();
+            NBomberRunner
+                .RegisterScenarios(registerScenario)
+                .Run();
         }
     }
+
 }
