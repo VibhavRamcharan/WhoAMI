@@ -1,7 +1,7 @@
 # WhoAMI MVP Architecture: Cost-Effective, Low-Latency Deployment
 
 This document outlines a proposed architecture for the WhoAMI MVP, designed to provide a fast user experience across multiple South African locations (Durban, Johannesburg, Cape Town) while adhering to a strict budget of $300/month for total infrastructure.
-
+Can 
 ## Core Principles
 
 *   **Edge Performance:** Deploying Web API instances geographically closer to users to minimize network latency for API calls.
